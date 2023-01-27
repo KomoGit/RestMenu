@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:restmenu/Logic/API/api_category.dart';
+import 'package:restmenu/Logic/API/api_menuitems.dart';
 import 'package:restmenu/Model/model_category.dart';
+import 'package:restmenu/Model/model_menuitems.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -29,6 +31,7 @@ class _HomeState extends State<Home> {
   //THIS v
   getData() async {
     final List<Category> cat = await CategoryAPI().fromRecordsToModels();
+    final List<MenuItem> item = await MenuAPI().fromRecordsToModels();
     lengthOfCategory = cat.length;
     if (lengthOfCategory != 0) {
       setState(() {

@@ -4,16 +4,6 @@ import 'package:restmenu/Model/model_category.dart';
 class CategoryAPI {
   final PocketBase _pb = PocketBase("http://127.0.0.1:8090");
 
-  Future<List<RecordModel>> getAllCategories() async {
-    final data = _pb.collection("category").getFullList();
-    return data;
-  }
-
-  Future<List<RecordModel>> getAllMenuItems() async {
-    final data = _pb.collection("menuitem").getFullList();
-    return data;
-  }
-
   Future<Category> fromRecordToModel() async {
     var rawData = await _pb.collection("category").getOne("xstpt1yqyfo6rmv");
     return Category.fromModel(rawData);
