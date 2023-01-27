@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocketbase/pocketbase.dart';
-import 'package:restmenu/Logic/API/api_pocketbase.dart';
+import 'package:restmenu/Logic/API/api_category.dart';
 import 'package:restmenu/Model/model_category.dart';
 
 class Home extends StatefulWidget {
@@ -11,8 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // ignore: unused_field
-  final PocketBase _pb = PocketBase("http://127.0.0.1:8090");
   String? title;
   String? imgUrl;
   int? lengthOfCategory;
@@ -30,16 +28,8 @@ class _HomeState extends State<Home> {
 
   //THIS v
   getData() async {
-    final List<Category> cat = await MyPocketBase().fromRecordsToModels();
+    final List<Category> cat = await CategoryAPI().fromRecordsToModels();
     lengthOfCategory = cat.length;
-    print(lengthOfCategory);
-    //final Category cat = await MyPocketBase().fromRecordToModel();
-    // final record = await _pb
-    //     .collection("category")
-    //     .getOne("xstpt1yqyfo6rmv"); //DONT REMOVE ME!
-    // title = record.getStringValue("imgUrl");
-    //imgUrl = cat.imgUrl;
-    //title = cat.title;
     if (lengthOfCategory != 0) {
       setState(() {
         isLoaded = true;
@@ -59,7 +49,7 @@ class _HomeState extends State<Home> {
         child: ListView.builder(
             itemCount: lengthOfCategory, //categoryItems?.length,
             itemBuilder: (context, index) {
-              return Center(child: Text("Sorry!"));
+              return Center(child: Text("Fortnite Balls Sussy"));
             }),
       ),
     );
