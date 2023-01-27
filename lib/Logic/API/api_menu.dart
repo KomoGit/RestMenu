@@ -1,13 +1,13 @@
 import 'package:pocketbase/pocketbase.dart';
-import 'package:restmenu/Model/model_menuitems.dart';
+import 'package:restmenu/Model/model_menu.dart';
 
 class MenuAPI {
   final PocketBase _pb = PocketBase("http://127.0.0.1:8090");
 
-  Future<List<RecordModel>> getAllCategories() async {
-    final data = _pb.collection("MenuItem").getFullList();
-    return data;
-  }
+  // Future<List<RecordModel>> getAllCategories() async {
+  //   final data = _pb.collection("MenuItem").getFullList();
+  //   return data;
+  // }
 
   Future<List<MenuItem>> fromRecordsToModels() async {
     var rawData = await _pb.collection("menuitem").getFullList();
