@@ -1,0 +1,19 @@
+import 'package:http/http.dart' as http;
+import 'package:restmenu/Model/model_category.keep';
+
+//Keep code the same for now but rename it for each type of data we will get.
+//This one fetches and parses the Categories.
+class RemoteService {
+  Future<Category> getCategory() async {
+    var client = http.Client();
+    final apiAccess =
+        Uri.parse("http://127.0.0.1:8090/api/collections/category/records/");
+    var response = await client.get(apiAccess);
+    if (response.statusCode == 200) {
+      var json = response.body;
+      final category = categoryFromJson(json);
+      return category;
+    }
+    throw "Fatal; ${response.statusCode}, not 200!";
+  }
+}
