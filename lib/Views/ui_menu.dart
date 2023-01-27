@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pocketbase/pocketbase.dart';
 import 'package:restmenu/Logic/API/api_category.dart';
 import 'package:restmenu/Logic/API/api_menu.dart';
-import 'package:restmenu/Logic/Debug/de_logger.dart';
 import 'package:restmenu/Model/model_category.dart';
 import 'package:restmenu/Model/model_menu.dart';
 
@@ -31,8 +31,9 @@ class _HomeState extends State<Home> {
   //THIS v
 
   getData() async {
-    cat = await CategoryAPI().fromRecordsToModels();
-    menuItem = await MenuAPI().fromRecordsToModels();
+    PocketBase pb = PocketBase("http://127.0.0.1:8090");
+    cat = await CategoryAPI().fromRecordsToModels(pb);
+    menuItem = await MenuAPI().fromRecordsToModels(pb);
     if (cat!.isNotEmpty) {
       setState(() {
         categoryLength = cat!.length;

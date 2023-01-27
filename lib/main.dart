@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:restmenu/Logic/menu_provider.dart';
 import 'package:restmenu/Views/ui_menu.dart';
-// import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
