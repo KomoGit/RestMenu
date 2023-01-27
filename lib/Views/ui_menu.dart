@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restmenu/Logic/API/api_category.dart';
-import 'package:restmenu/Logic/API/api_menu.dart';
+import 'package:restmenu/Logic/Debug/de_logger.dart';
 import 'package:restmenu/Model/model_category.dart';
 import 'package:restmenu/Model/model_menu.dart';
 
@@ -34,12 +34,14 @@ class _HomeState extends State<Home> {
   //I have no current understanding as why?
   getData() async {
     final List<Category> cat = await CategoryAPI().fromRecordsToModels();
-    final List<MenuItem> item = await MenuAPI().fromRecordsToModels();
+    // final List<MenuItem> menuItem = await MenuAPI().fromRecordsToModels();
     if (cat.isNotEmpty) {
       setState(() {
         categoryLength = cat.length;
         isLoaded = true;
-        print(cat[1].title);
+        for (var i = 0; i < cat.length; i++) {
+          Logger.logOut(cat[i].title);
+        }
       });
     }
   }
@@ -58,7 +60,7 @@ class _HomeState extends State<Home> {
             itemBuilder: (context, index) {
               return Center(
                   child: Text(cat != null
-                      ? cat![index].title
+                      ? cat![index - 1].title
                       : "Warning, null value!"));
             }),
       ),
