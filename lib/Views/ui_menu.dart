@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:restmenu/Logic/API/api_category.dart';
-import 'package:restmenu/Logic/API/api_menuitems.dart';
+import 'package:restmenu/Logic/API/api_menu.dart';
 import 'package:restmenu/Model/model_category.dart';
-import 'package:restmenu/Model/model_menuitems.dart';
+import 'package:restmenu/Model/model_menu.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,9 +12,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String? title;
-  String? imgUrl;
-  int? lengthOfCategory;
+  List<Category>? cat;
+  List<MenuItem>?
+      menu; //It is possible that these two items are null when they are not being called from getData();
+  int? categoryLength;
   var isLoaded = false;
 
   //Remember these two important pieces of code!
@@ -29,13 +29,17 @@ class _HomeState extends State<Home> {
   }
 
   //THIS v
+
+  //Current issue we are facing right now. The data which is not supposed to be null is coming back to us as null.
+  //I have no current understanding as why?
   getData() async {
     final List<Category> cat = await CategoryAPI().fromRecordsToModels();
     final List<MenuItem> item = await MenuAPI().fromRecordsToModels();
-    lengthOfCategory = cat.length;
-    if (lengthOfCategory != 0) {
+    if (cat.isNotEmpty) {
       setState(() {
+        categoryLength = cat.length;
         isLoaded = true;
+        print(cat[1].title);
       });
     }
   }
@@ -50,9 +54,12 @@ class _HomeState extends State<Home> {
           child: CircularProgressIndicator(),
         ),
         child: ListView.builder(
-            itemCount: lengthOfCategory, //categoryItems?.length,
+            itemCount: categoryLength,
             itemBuilder: (context, index) {
-              return Center(child: Text("Fortnite Balls Sussy"));
+              return Center(
+                  child: Text(cat != null
+                      ? cat![index].title
+                      : "Warning, null value!"));
             }),
       ),
     );
