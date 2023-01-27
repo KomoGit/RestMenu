@@ -13,7 +13,9 @@ class MenuItem {
 
   static MenuItem fromModel(RecordModel model) {
     bool active = model.getBoolValue('active');
+    print(active);
     String title = model.getStringValue('title');
+    print(title);
     String desc = model.getStringValue('desc');
     String imgUrl = model.getStringValue('imgUrl');
     String img = model.getStringValue('img');
