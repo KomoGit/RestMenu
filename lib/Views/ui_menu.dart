@@ -14,8 +14,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<Category>? cat;
-  List<MenuItem>?
-      menuItem; //It is possible that these two items are null when they are not being called from getData();
+  List<MenuItem>? menuItem;
   int? categoryLength;
   var isLoaded = false;
 
@@ -31,12 +30,9 @@ class _HomeState extends State<Home> {
 
   //THIS v
 
-  //Current issue we are facing right now. The data which is not supposed to be null is coming back to us as null.
-  //I have no current understanding as why?
   getData() async {
-    /*final List<Category>*/ cat = await CategoryAPI()
-        .fromRecordsToModels(); //I am an idiot. Let it be known.
-    /* final List<MenuItem>*/ menuItem = await MenuAPI().fromRecordsToModels();
+    cat = await CategoryAPI().fromRecordsToModels();
+    menuItem = await MenuAPI().fromRecordsToModels();
     if (cat!.isNotEmpty) {
       setState(() {
         categoryLength = cat!.length;
