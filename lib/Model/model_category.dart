@@ -10,9 +10,13 @@ class Category {
 
   static Category fromModel(RecordModel model) {
     bool active = model.getBoolValue('active');
+    // print(active);
     String title = model.getStringValue('title');
+    // print(title);
     String imgUrl = model.getStringValue('imgUrl');
+    // print(imgUrl);
     String img = model.getStringValue('img');
+    // print(img);
     return Category(active, title, img, imgUrl);
   }
 }
