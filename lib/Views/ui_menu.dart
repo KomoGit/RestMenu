@@ -4,6 +4,9 @@ import 'package:restmenu/Logic/API/api_category.dart';
 import 'package:restmenu/Logic/API/api_menu.dart';
 import 'package:restmenu/Model/model_category.dart';
 import 'package:restmenu/Model/model_menu.dart';
+import 'package:restmenu/Views/Widgets/ui_category.dart';
+
+PocketBase pb = PocketBase("http://127.0.0.1:8090");
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,7 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Category>? cat;
+  List<Category>? category;
   List<MenuItem>? menuItem;
   int? categoryLength;
   var isLoaded = false;
@@ -31,12 +34,11 @@ class _HomeState extends State<Home> {
   //THIS v
 
   getData() async {
-    PocketBase pb = PocketBase("http://127.0.0.1:8090");
-    cat = await CategoryAPI().fromRecordsToModels(pb);
+    category = await CategoryAPI().fromRecordsToModels(pb);
     menuItem = await MenuAPI().fromRecordsToModels(pb);
-    if (cat!.isNotEmpty) {
+    if (category!.isNotEmpty) {
       setState(() {
-        categoryLength = cat!.length;
+        categoryLength = category!.length;
         isLoaded = true;
       });
     }
@@ -54,10 +56,10 @@ class _HomeState extends State<Home> {
         child: ListView.builder(
             itemCount: categoryLength,
             itemBuilder: (context, index) {
-              return Center(
-                  child: Text(cat != null
-                      ? cat![index].title
-                      : "Warning, null value!"));
+              return CategoryView(
+                title: category![index].title,
+                imgUrl: category![index].imgUrl,
+              );
             }),
       ),
     );
