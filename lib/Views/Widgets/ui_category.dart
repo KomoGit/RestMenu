@@ -7,11 +7,11 @@ class CategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.network(imgUrl),
-      ],
-    );
+    return Align(
+        alignment: Alignment.centerLeft,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Image.network(imgUrl), Text(title)],
+        ));
   }
 }
