@@ -21,17 +21,11 @@ class _HomeState extends State<Home> {
   int? categoryLength;
   var isLoaded = false;
 
-  //Remember these two important pieces of code!
   @override
   void initState() {
-    //And this!
     super.initState();
-
-    //Fetching data from API.
     getData();
   }
-
-  //THIS v
 
   getData() async {
     category = await CategoryAPI().fromRecordsToModels(pb);
