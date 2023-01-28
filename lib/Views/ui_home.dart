@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocketbase/pocketbase.dart';
-import 'package:restmenu/Logic/API/api_category.dart';
-import 'package:restmenu/Logic/API/api_menu.dart';
+import 'package:restmenu/Logic/Controller/category_controller.dart';
+import 'package:restmenu/Logic/Controller/menu_controller.dart';
 import 'package:restmenu/Model/model_category.dart';
 import 'package:restmenu/Model/model_menu.dart';
 import 'package:restmenu/Views/Widgets/ui_category.dart';
