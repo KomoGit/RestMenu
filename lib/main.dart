@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restmenu/Views/ui_menu.dart';
+import 'package:restmenu/Views/ui_home.dart';
 
 void main() {
   runApp(const MyApp());
