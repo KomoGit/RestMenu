@@ -1,12 +1,17 @@
 import 'package:pocketbase/pocketbase.dart';
 
+/*
+TODO: We need to add a variable here that will also contain category,
+ and perhaps get rid of String img as we don't use it to represent anything.
+ */
 class MenuItem {
   bool active;
   String title;
   String desc;
-  double price;
   String img;
   String imgUrl;
+
+  double price;
 
   MenuItem(
       this.active, this.title, this.desc, this.price, this.img, this.imgUrl);

@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
         visible: isLoaded,
         replacement: const Center(
           child: CircularProgressIndicator(),
-        ),
+        ), //TODO: Create a Row that will house menu items and categories.
         child: ListView.builder(
             itemCount: categoryLength,
             itemBuilder: (context, index) {
