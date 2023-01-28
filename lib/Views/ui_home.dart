@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
   List<Category>? category;
   List<MenuItem>? menuItem;
   int? categoryLength;
+  int? menuLength;
   var isLoaded = false;
 
   @override
@@ -33,6 +34,7 @@ class _HomeState extends State<Home> {
     if (category!.isNotEmpty) {
       setState(() {
         categoryLength = category!.length;
+        menuLength = menuItem!.length;
         isLoaded = true;
       });
     }
@@ -50,6 +52,12 @@ class _HomeState extends State<Home> {
         child: ListView.builder(
             itemCount: categoryLength,
             itemBuilder: (context, index) {
+              // return MenuView(
+              //     title: menuItem![index].title,
+              //     desc: menuItem![index].desc,
+              //     category: menuItem![index].img,
+              //     imgUrl: menuItem![index].imgUrl,
+              //     price: menuItem![index].price);
               return CategoryView(
                 title: category![index].title,
                 imgUrl: category![index].imgUrl,
