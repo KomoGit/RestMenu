@@ -57,23 +57,15 @@ class _HomeState extends State<Home> {
               height: double.infinity,
               width: 150,
               child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   itemCount: categoryLength,
                   itemBuilder: (context, index) {
                     return CategoryView(
-                      title: category![index].title,
-                      imgUrl: category![index].imgUrl,
+                      title: category![0].title,
+                      imgUrl: category![0].imgUrl,
                     );
                   }),
             ),
-            // ListView.builder(
-            //     itemCount: categoryLength,
-            //     itemBuilder: (context, index) {
-            //       return MenuView(
-            //           title: menuItem![index].title,
-            //           desc: menuItem![index].desc,
-            //           category: menuItem![index].category,
-            //           imgUrl: menuItem![index].imgUrl,
-            //           price: menuItem![index].price);
           ],
         ),
       ),
