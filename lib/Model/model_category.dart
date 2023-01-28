@@ -20,21 +20,14 @@ you must use imageURL instead of img to showcase the item.
  */
 
 class Category {
-  //bool active;
   String title;
-  //String img;
   String imgUrl;
 
-  Category(/*this.active,*/ this.title, /*this.img,*/ this.imgUrl);
+  Category(this.title, this.imgUrl);
 
   static Category fromModel(RecordModel model) {
-    //bool active = model.getBoolValue('active');
     String title = model.getStringValue('title');
     String imgUrl = model.getStringValue('imgUrl');
-    //String img = model.getStringValue('img');
-    return Category(
-        /*active, img,*/
-        title,
-        imgUrl);
+    return Category(title, imgUrl);
   }
 }
