@@ -5,6 +5,7 @@ import 'package:restmenu/Logic/Controller/menu_controller.dart';
 import 'package:restmenu/Model/model_category.dart';
 import 'package:restmenu/Model/model_menu.dart';
 import 'package:restmenu/Views/Widgets/ui_category.dart';
+// import 'package:restmenu/Views/Widgets/ui_menu.dart';
 
 PocketBase pb = PocketBase("http://127.0.0.1:8090");
 
@@ -52,12 +53,12 @@ class _HomeState extends State<Home> {
         child: ListView.builder(
             itemCount: categoryLength,
             itemBuilder: (context, index) {
-              // return MenuView(
-              //     title: menuItem![index].title,
-              //     desc: menuItem![index].desc,
-              //     category: menuItem![index].img,
-              //     imgUrl: menuItem![index].imgUrl,
-              //     price: menuItem![index].price);
+              /*return MenuView(
+                  title: menuItem![index].title,
+                  desc: menuItem![index].desc,
+                  category: menuItem![index].category,
+                  imgUrl: menuItem![index].imgUrl,
+                  price: menuItem![index].price);*/
               return CategoryView(
                 title: category![index].title,
                 imgUrl: category![index].imgUrl,
