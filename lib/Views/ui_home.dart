@@ -60,6 +60,7 @@ class _HomeState extends State<Home> {
                   itemCount: categoryLength,
                   itemBuilder: (context, index) {
                     return CategoryView(
+                      index: index,
                       menuItem: menuItem!,
                       title: category![index].title,
                       imgUrl: category![index].imgUrl,
