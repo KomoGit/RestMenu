@@ -4,7 +4,7 @@ import 'package:restmenu/Logic/Controller/category_controller.dart';
 import 'package:restmenu/Logic/Controller/menu_controller.dart';
 import 'package:restmenu/Model/model_category.dart';
 import 'package:restmenu/Model/model_menu.dart';
-import 'package:restmenu/Views/Widgets/ui_category.dart';
+import 'package:restmenu/Views/Widgets/ui_category_item.dart';
 
 PocketBase pb = PocketBase("http://127.0.0.1:8090");
 
@@ -30,10 +30,12 @@ class _HomeState extends State<Home> {
 
   getData() async {
     category = await CategoryAPI().fromRecordsToModels(pb);
-    menuItem = await MenuAPI().fromRecordsToModels(pb);
+    menuItem = await MenuAPI().fromRecordsToModels(
+        pb); //Note to self, adding a filteredList of items here is useless unless you wish to hard code it.
     if (category!.isNotEmpty) {
       setState(() {
-        categoryLength = category!.length;
+        categoryLength = category!
+            .length; //For some reason just adding category length to listview causes the entire system to `ef` up
         isLoaded = true;
       });
     }
@@ -42,34 +44,35 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Pocket Menu")),
-      body: Visibility(
-        visible: isLoaded,
-        replacement: const Center(
-          child: CircularProgressIndicator(),
-        ), //TODO: Create a Row that will house menu items and categories.
-        child: Row(
-          children: [
-            Container(
-              alignment: Alignment.topLeft,
-              color: Colors.grey,
-              height: double.infinity,
-              width: 150,
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: categoryLength,
-                  itemBuilder: (context, index) {
-                    return CategoryView(
-                      index: index,
-                      menuItem: menuItem!,
-                      title: category![index].title,
-                      imgUrl: category![index].imgUrl,
-                    );
-                  }),
-            ),
-          ],
-        ),
-      ),
-    );
+        appBar: AppBar(title: const Text("Pocket Menu")),
+        body: Visibility(
+          visible: isLoaded,
+          replacement: const Center(
+            child: CircularProgressIndicator(),
+          ), //TODO: Create a Row that will house menu items and categories.
+          child: Row(
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                color: Colors.grey,
+                height: double.infinity,
+                width: 150,
+                child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: categoryLength,
+                    itemBuilder: (context, index) {
+                      return CategoryView(
+                        index: index,
+                        menuItem: /*Filter.filteredItems(
+                        menuItem!, category![index].title), */
+                            menuItem!,
+                        title: category![index].title,
+                        imgUrl: category![index].imgUrl,
+                      );
+                    }),
+              ),
+            ],
+          ),
+        ));
   }
 }
