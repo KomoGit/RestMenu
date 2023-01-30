@@ -4,6 +4,7 @@ import 'package:restmenu/Model/model_menu.dart';
 /*Filtering is what we have left for this part of the project. 
 Once that is done we only need to implement a button and we are golden*/
 //TODO: IMPLEMENT - If category is empty, do not generate.
+//TODO: FIX - Category is not adaptive, if there are many items in one category, it will bug out.
 class CategoryView extends StatelessWidget {
   final List<MenuItem> menuItem;
   final int index;
@@ -33,11 +34,9 @@ class CategoryView extends StatelessWidget {
             ))),
         const Padding(padding: EdgeInsets.all(10)),
         ExpansionTile(title: Text(title), children: [
-          const Padding(
-            padding: EdgeInsets.all(5),
-          ),
+          const Padding(padding: EdgeInsets.all(5)),
           SizedBox(
-            height: MediaQuery.of(context).size.height - 600,
+            height: MediaQuery.of(context).size.height - 520,
             child: ListView.builder(
                 itemCount: menuItem.length,
                 itemBuilder: (context, index) {
