@@ -58,9 +58,8 @@ class _HomeState extends State<Home> {
                 color: Colors.grey,
                 height: double.infinity,
                 width: 150,
-                child: ListView.builder(
+                child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: categoryLength,
                     itemBuilder: (context, index) {
                       return CategoryView(
                         index: index,
@@ -70,7 +69,11 @@ class _HomeState extends State<Home> {
                         title: category![index].title,
                         imgUrl: category![index].imgUrl,
                       );
-                    }),
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider();
+                    },
+                    itemCount: categoryLength!),
               ),
             ],
           ),
