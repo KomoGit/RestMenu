@@ -65,7 +65,6 @@ class _HomeState extends State<Home> {
                         index: index,
                         menuItem: Filter.filteredItems(
                             menuItem!, category![index].id),
-                        // menuItem!,
                         title: category![index].title,
                         imgUrl: category![index].imgUrl,
                       );
