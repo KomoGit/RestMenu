@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
+      home:
+          const Home(), //TODO: Figure out what is causing 'null check operator used on a null value' here
     );
   }
 }
