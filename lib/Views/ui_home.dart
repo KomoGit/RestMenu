@@ -5,6 +5,7 @@ import 'package:restmenu/Logic/Controller/menu_controller.dart';
 import 'package:restmenu/Model/model_category.dart';
 import 'package:restmenu/Model/model_menu.dart';
 import 'package:restmenu/Views/Widgets/ui_category_item.dart';
+import 'package:restmenu/Logic/menu_filter.dart';
 
 PocketBase pb = PocketBase("http://127.0.0.1:8090");
 
@@ -63,9 +64,9 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       return CategoryView(
                         index: index,
-                        menuItem: /*Filter.filteredItems(
-                        menuItem!, category![index].title), */
-                            menuItem!,
+                        menuItem: Filter.filteredItems(
+                            menuItem!, category![index].id),
+                        // menuItem!,
                         title: category![index].title,
                         imgUrl: category![index].imgUrl,
                       );
